@@ -1,32 +1,50 @@
 {
-	"Transaction 1": [
+	"ACM Computing Surveys": [
 		{
-			"url": "https://mc.manuscriptcentral.com/transaction_1",
-			"username": "name.lastname@something.com",
-			"password": "MyPasswordForTransaction1",
-			"max_entry": 2
+			"url": "https://mc.manuscriptcentral.com/csur",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
 		}
 	],
-	"Transaction 2": [
+	"IEEE Transactions on Systems, Man and Cybernetics: Systems": [
 		{
-			"url": "https://mc.manuscriptcentral.com/transaction_2",
-			"username": "name.lastname@something.com",
-			"password": "MyPasswordForTransaction2"
+			"url": "https://mc.manuscriptcentral.com/systems",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
 		}
 	],
-	"Transaction 3": [
+	"ACM Transactions on Intelligent Systems and Technology": [
 		{
-			"url": "https://mc.manuscriptcentral.com/transaction_3",
-			"username": "name.lastname@something.com",
-			"password": "MyPasswordForTransaction3",
-			"max_entry": 5
+			"url": "https://mc.manuscriptcentral.com/tist",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
 		}
 	],
-	"Transaction 4": [
+	"IEEE Communications Surveys and Tutorials": [
 		{
-			"url": "https://mc.manuscriptcentral.com/transaction_4",
-			"username": "name.lastname@something.com",
-			"password": "MyPasswordForTransaction4"
+			"url": "https://mc.manuscriptcentral.com/comst-ieee",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
+		}
+	],
+	"ACM Distributed Ledger Technologies": [
+		{
+			"url": "https://mc.manuscriptcentral.com/dlt",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
+		}		
+	],
+	"Transactions on Information Forensics": [
+		{
+			"url": "https://mc.manuscriptcentral.com/sps-ieee",
+			"username": "demo@demo.com",
+			"password": "password",
+			"max_entry": 1
 		}
 	]
 }

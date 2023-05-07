@@ -74,13 +74,21 @@ def get_entries(driver, timeout, max_entry):
 
 
 
-def query_website(driver, url, username, password, max_entry, timeout):
+def query_website(driver, url, journal, username, password, max_entry, timeout):
 
 	driver.get(url)
 
 	try:
 		element_present = EC.presence_of_element_located((By.NAME, "USERID"))
 		WebDriverWait(driver, timeout).until(element_present)
+		try:
+			login_journal = driver.find_element(By.NAME,"XIK_LOGIN_CONFIG_ID")
+			if login_journal:
+				login_journal.click()
+				target_journal = driver.find_element(By.XPATH, f"//option[ contains(text(), '{journal}')]")
+				target_journal.click()
+		except Exception as e:
+			pass
 		login_bar = driver.find_element(By.NAME,"USERID")
 		login_bar.clear()
 		login_bar.send_keys(username)
@@ -90,6 +98,7 @@ def query_website(driver, url, username, password, max_entry, timeout):
 		pass_bar.send_keys(Keys.RETURN)
 	except TimeoutException as e:
 		print("Timed out waiting for page %s to load" % url)
+		print(e)
 		exit()
 
 	sleep(timeout)
@@ -124,7 +133,6 @@ def main():
 		help="[optional] timeout waiting for website response (default=2)")
 	args = parser.parse_args()
 	json_file_name = args.json
-
 	try:
 		driver = webdriver.Chrome('./chromedriver')
 
@@ -138,7 +146,7 @@ def main():
 				username = data[k][0]["username"]
 				password = data[k][0]["password"]
 				max_entry = data[k][0]["max_entry"] if "max_entry" in data[k][0] else default_max_entry
-				query_website(driver, url, username, password, max_entry, args.timeout)
+				query_website(driver, url, k,username, password, max_entry, args.timeout)
 
 	except Exception: 
 		traceback.print_exc()

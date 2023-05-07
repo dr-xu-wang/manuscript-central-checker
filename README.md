@@ -25,6 +25,7 @@ This tool has been tested on:
 - IEEE Journal of Biomedical and Health Informatics (JBHI) (https://mc.manuscriptcentral.com/jbhi-embs)
 - IEEE Transactions on Computers (TC) (https://mc.manuscriptcentral.com/tc-cs)
 - IEEE Transactions on Emerging Topics in Computing (TETC) (https://mc.manuscriptcentral.com/tetc-cs)
+- IEEE Transactions on Information Forensics and Security (TIFS) (https://mc.manuscriptcentral.com/sps-ieee)
 - IEEE Transactions on Parallel and Distributed Systems (TPDS) (https://mc.manuscriptcentral.com/tpds-cs)
-- IEEE Transactions on Very Large Scale Integration (TVLSI) (https://mc.manuscriptcentral.com/tvlsi-ieee)
+- IEEE Transactions on Very Large Scale Integration (TVLSI) (https://mc.manuscriptcentral.com/tvlsi-ieee) (JSON key should be Transactions on Information Forensics)
 - IEEE Transactions on Systems, Man and Cybernetics: Systems (SMC: Systems) (https://mc.manuscriptcentral.com/systems)
