@@ -126,9 +126,7 @@ def main():
 	json_file_name = args.json
 
 	try:
-		options = Options()
-		options.add_argument("--headless")
-		driver = webdriver.Chrome('./chromedriver', options=options)
+		driver = webdriver.Chrome('./chromedriver')
 
 		print("\n\n")
 
