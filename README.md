@@ -1,7 +1,7 @@
 # manuscript-central-checker
 A Python-based script to check the status of transactions and journals on Manuscript Central
 
-The script has been tested on Python 3.6 with ChromeDriver 98.0.4758.102
+The script has been tested on Python 3.6 with ChromeDriver 112.0.5615.49 and Selenium 4.9.0 
 
 Requirements:
 - Python >=3.6
