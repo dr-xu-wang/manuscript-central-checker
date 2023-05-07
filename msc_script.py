@@ -31,20 +31,21 @@ def get_entries(driver, timeout, max_entry):
 	try:
 		element_present = EC.presence_of_element_located((By.ID, "authorDashboardQueue"))
 		WebDriverWait(driver, timeout).until(element_present)
-		author_table = driver.find_element_by_id("authorDashboardQueue")
+		author_table = driver.find_element(By.ID,"authorDashboardQueue")
 		queue_id=0
 		while(queue_id < max_entry):
 			try:
 				current_queue="queue_"+str(queue_id)
-				queue_bar = author_table.find_element_by_id(current_queue)
-				infos = queue_bar.find_elements_by_tag_name("td")
+				queue_bar = author_table.find_element(By.ID,current_queue)
+				infos = queue_bar.find_elements(By.TAG_NAME,"td")
 				
 				infos_len = len(infos)
 				adm_found = False
 				adm_index = -1
 				for c, i in enumerate(infos):
 					if not adm_found:
-						adms = [j.strip() for j in i.text.split("\n") if "ADM:" in j or "INF:" in j or "EIC:" in j]
+						# IEEE Communications Surveys and Tutorials also has AEiC
+						adms = [j.strip() for j in i.text.split("\n") if "ADM:" in j or "INF:" in j or "EIC:" in j or "AEiC" in j]
 						if len(adms) > 0:
 							data = "\n".join(adms)
 							adm_found = True
@@ -66,8 +67,9 @@ def get_entries(driver, timeout, max_entry):
 				queue_id += 1
 			except NoSuchElementException:
 				break
-	except TimeoutException:
+	except TimeoutException as e:
 		print("Timed out waiting for author page to load")
+		print(e)
 		exit()
 
 
@@ -79,34 +81,34 @@ def query_website(driver, url, username, password, max_entry, timeout):
 	try:
 		element_present = EC.presence_of_element_located((By.NAME, "USERID"))
 		WebDriverWait(driver, timeout).until(element_present)
-		login_bar = driver.find_element_by_name("USERID")
+		login_bar = driver.find_element(By.NAME,"USERID")
 		login_bar.clear()
 		login_bar.send_keys(username)
-		pass_bar = driver.find_element_by_name("PASSWORD")
+		pass_bar = driver.find_element(By.NAME,"PASSWORD")
 		pass_bar.clear()
 		pass_bar.send_keys(password)
 		pass_bar.send_keys(Keys.RETURN)
-	except TimeoutException:
+	except TimeoutException as e:
 		print("Timed out waiting for page %s to load" % url)
 		exit()
 
 	sleep(timeout)
 
-	nav_links = driver.find_elements_by_class_name("nav-link")
+	nav_links = driver.find_elements(By.CLASS_NAME,"nav-link")
 	for i in nav_links:
 		if(i.text == "Author"):
 			i.click()
 #			get_entries(driver, timeout, max_entry)
 			break
 	
-	decision = driver.find_elements_by_class_name("nav-submenu")
+	decision = driver.find_elements(By.CLASS_NAME,"nav-submenu")
 	for i in decision:
 		if("Manuscripts with Decisions" in i.text):
 			i.click()
 			get_entries(driver, timeout, max_entry)
 			break
 
-	coauthor = driver.find_elements_by_class_name("nav-submenu")
+	coauthor = driver.find_elements(By.CLASS_NAME,"nav-submenu")
 	for i in coauthor:
 		if("Manuscripts I Have Co-Authored" in i.text):
 			i.click()
